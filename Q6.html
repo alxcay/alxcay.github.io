@@ -95,13 +95,13 @@
 				document.body.appendChild( labelRenderer.domElement );
 
 				camera = new THREE.PerspectiveCamera( 20, window.innerWidth / window.innerHeight, 1, 1000 );
-				camera.position.set(5.4, 1.1, -.8 );
+				camera.position.set(5.4, 1.1, -0.2 );
 
 				// controls
 
 				controls = new OrbitControls( camera, labelRenderer.domElement );
 				controls.listenToKeyEvents( window ); // optional
-				controls.target.set( 1.2, -.3, -0.8 );
+				controls.target.set( 1.2, -.3, -0.2 );
 
 				//controls.addEventListener( 'change', render ); // call this only in static scenes (i.e., if there is no animation loop)
 
@@ -138,7 +138,7 @@
 				alab.style.fontSize = 'xx-large';
 				alab.style.backgroundColor ='white';
 				const alabel = new CSS2DObject( alab );
-				alabel.position.set( 90, 150, 148 );
+				alabel.position.set( 53, 110, 108 );
 				
 				alabel.layers.set( 0 );
 
@@ -151,7 +151,7 @@
 				blab.style.fontSize = 'xx-large';
 				blab.style.backgroundColor ='white';
 				const blabel = new CSS2DObject( blab );
-				blabel.position.set( 323, 150, 148 );
+				blabel.position.set( 211, 110, 108 );
 				
 				blabel.layers.set( 0 );
 
@@ -164,18 +164,18 @@
 				clab.style.fontSize = 'xx-large';
 				clab.style.backgroundColor ='white';
 				const clabel = new CSS2DObject( clab );
-				clabel.position.set( 560, 150, 148 );
+				clabel.position.set( 369, 110, 108 );
 				
 				
 				clabel.layers.set( 0 );
 
 				const loader = new STLLoader();
-				loader.load('Q3.STL', function ( geometry ) {
+				loader.load('Q6.STL', function ( geometry ) {
 
 					const material = new THREE.MeshPhongMaterial( { color: 0xff5533, specular: 0x111111, shininess: 200 } );
 					const mesh = new THREE.Mesh( geometry, material );
 
-					mesh.position.set( 0.3, - .91, 0.8 );
+					mesh.position.set( 0.3, -0.85, 0.8 );
 					mesh.rotation.set( - Math.PI / 2,  Math.PI / 2,  Math.PI / 2 );
 					mesh.scale.set( 0.005, 0.005, 0.005 );
 
@@ -190,29 +190,12 @@
 
 				} );
 
-				loader.load('Quarter.STL', function ( geometry ) {
-
-					const material = new THREE.MeshPhongMaterial( { color: 0x6e6e6e, specular: 0x111111, shininess: 200 } );
-					const mesh2 = new THREE.Mesh( geometry, material );
-
-					mesh2.position.set( 1.5, -0.5, -.84 );
-					mesh2.rotation.set( - Math.PI / 2,  Math.PI / 2,  Math.PI / 2 );
-					mesh2.scale.set( 0.005, 0.005, 0.005 );
-
-					mesh2.castShadow = true;
-					// mesh2.receiveShadow = true;
-
-					mesh2.layers.enableAll();
-					scene.add( mesh2 );
-					
-
-				} );
 
 
 				// Lights
 				scene.add( new THREE.HemisphereLight( 0x443333, 0x111122 ) );
 
-				addShadowedLight(-1, 1, 1, 0xffffff, 1.35 );
+				addShadowedLight(-1, 1, 2, 0xffffff, 1.35 );
 				addShadowedLight( 1.5, 5, 0, 0xffaa00, 0.7 );
 
 
