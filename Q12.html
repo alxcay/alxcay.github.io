@@ -138,7 +138,7 @@
 				alab.style.fontSize = 'xx-large';
 				alab.style.backgroundColor ='white';
 				const alabel = new CSS2DObject( alab );
-				alabel.position.set( 200, 200, 0);
+				alabel.position.set( 230, 200, 0);
 				
 				alabel.layers.set( 0 );
 
@@ -151,7 +151,7 @@
 				blab.style.fontSize = 'xx-large';
 				blab.style.backgroundColor ='white';
 				const blabel = new CSS2DObject( blab );
-				blabel.position.set( 1350, 200, 0 );
+				blabel.position.set( 1400, 200, 0 );
 				
 				blabel.layers.set( 0 );
 
@@ -175,7 +175,7 @@
 					const material = new THREE.MeshPhongMaterial( { color: 0xff5533, specular: 0x111111, shininess: 200 } );
 					const mesh = new THREE.Mesh( geometry, material );
 
-					mesh.position.set( .6, -.11, 0.5 );
+					mesh.position.set( .6, -.11, 0.45 );
 					mesh.rotation.set( - Math.PI / 2,  Math.PI / 2,  Math.PI / 2 );
 					mesh.scale.set( 0.0005, 0.0005, 0.0005 );
 					mesh.rotateX(Math.PI / 2);
