@@ -138,7 +138,7 @@
 				alab.style.fontSize = 'xx-large';
 				alab.style.backgroundColor ='white';
 				const alabel = new CSS2DObject( alab );
-				alabel.position.set( 230, 200, 0);
+				alabel.position.set( 100, 150, 560);
 				
 				alabel.layers.set( 0 );
 
@@ -151,7 +151,7 @@
 				blab.style.fontSize = 'xx-large';
 				blab.style.backgroundColor ='white';
 				const blabel = new CSS2DObject( blab );
-				blabel.position.set( 1400, 200, 0 );
+				blabel.position.set( 100, 150, 350 );
 				
 				blabel.layers.set( 0 );
 
@@ -164,7 +164,64 @@
 				clab.style.fontSize = 'xx-large';
 				clab.style.backgroundColor ='white';
 				const clabel = new CSS2DObject( clab );
-				clabel.position.set( 2400, 200, 0 );
+				clabel.position.set( 100, 150, 120 );
+
+				//Label (W)
+				const wlab = document.createElement( 'div' );
+				wlab.className = 'label';
+				wlab.textContent = 'W';
+				wlab.style.marginTop = '-1em';
+				wlab.style.padding = '0px';
+				wlab.style.fontSize = 'xx-large';
+				const wlabel = new CSS2DObject( wlab );
+				wlabel.position.set( 91, 73, 455 );
+
+				const wlab2 = document.createElement( 'div' );
+				wlab2.className = 'label';
+				wlab2.textContent = 'W';
+				wlab2.style.marginTop = '-1em';
+				wlab2.style.padding = '0px';
+				wlab2.style.fontSize = 'xx-large';
+				const wlabel2 = new CSS2DObject( wlab2 );
+				wlabel2.position.set( 91, 73, 218 );
+
+				//Label (L)
+				const llab = document.createElement( 'div' );
+				llab.className = 'label';
+				llab.textContent = 'L';
+				llab.style.marginTop = '-1em';
+				llab.style.padding = '7px';
+				llab.style.fontSize = 'xx-large';
+				const llabel = new CSS2DObject( llab );
+				llabel.position.set( 150, 73, 340 );
+
+				const llab2 = document.createElement( 'div' );
+				llab2.className = 'label';
+				llab2.textContent = 'L';
+				llab2.style.marginTop = '-1em';
+				llab2.style.padding = '7px';
+				llab2.style.fontSize = 'xx-large';
+				const llabel2 = new CSS2DObject( llab2 );
+				llabel2.position.set( 150, 73, 99 );
+
+				//Label (H)
+				const hlab = document.createElement( 'div' );
+				hlab.className = 'label';
+				hlab.textContent = 'H';
+				hlab.style.marginTop = '-1em';
+				hlab.style.padding = '7px';
+				hlab.style.fontSize = 'xx-large';
+				const hlabel = new CSS2DObject( hlab );
+				hlabel.position.set( 118, 80, 300 );
+
+				const hlab2 = document.createElement( 'div' );
+				hlab2.className = 'label';
+				hlab2.textContent = 'H';
+				hlab2.style.marginTop = '-1em';
+				hlab2.style.padding = '7px';
+				hlab2.style.fontSize = 'xx-large';
+				const hlabel2 = new CSS2DObject( hlab2 );
+				hlabel2.position.set( 118, 80, 50 );
 				
 				
 				clabel.layers.set( 0 );
@@ -187,6 +244,12 @@
 					mesh.add( alabel );
 					mesh.add( blabel );
 					mesh.add( clabel );
+					mesh.add( wlabel );
+					mesh.add( wlabel2 );
+					mesh.add( llabel );
+					mesh.add( llabel2 );
+					mesh.add( hlabel );
+					mesh.add( hlabel2 );
 					scene.add( mesh );
 
 				} );
@@ -194,16 +257,150 @@
 				const material = new THREE.LineBasicMaterial({
 					color: 0xff000000
 				});
-
+ 
+				// Line
 				const points = [];
-				//points.push( new THREE.Vector3( .6, -.73, -1.2  ) );
-				points.push( new THREE.Vector3( .8, -.6, .1 ) );
-				points.push( new THREE.Vector3( .8, -.4, .1 ) );
-
+				points.push( new THREE.Vector3( .8, -.48, .1 ) );
+				points.push( new THREE.Vector3( .8, -.48, .18 ) );
 				const geometry = new THREE.BufferGeometry().setFromPoints( points );
 
 				const line = new THREE.Line( geometry, material );
 				scene.add( line );
+
+				// Line2
+				const points2 = [];
+				points2.push( new THREE.Vector3( .9, -.48, .1 ) );
+				points2.push( new THREE.Vector3( .9, -.48, .18 ) );
+				const geometry2 = new THREE.BufferGeometry().setFromPoints( points2 );
+
+				const line2 = new THREE.Line( geometry2, material );
+				scene.add( line2 );
+
+				// Line3
+				const points3 = [];
+				points3.push( new THREE.Vector3( .9, -.48, .09 ) );
+				points3.push( new THREE.Vector3( 1.1, -.48, .09 ) );
+				const geometry3 = new THREE.BufferGeometry().setFromPoints( points3 );
+
+				const line3 = new THREE.Line( geometry3, material );
+				scene.add( line3 );
+
+				// Line4
+				const points4 = [];
+				points4.push( new THREE.Vector3( .9, -.48, -.43 ) );
+				points4.push( new THREE.Vector3( 1.1, -.48, -.43 ) );
+				const geometry4 = new THREE.BufferGeometry().setFromPoints( points4 );
+
+				const line4 = new THREE.Line( geometry4, material );
+				scene.add( line4 );
+
+				// Line5
+				const points5 = [];
+				points5.push( new THREE.Vector3( 1.05, -.48, -.2 ) );
+				points5.push( new THREE.Vector3( 1.05, -.48, -.43 ) );
+				const geometry5 = new THREE.BufferGeometry().setFromPoints( points5 );
+
+				const line5 = new THREE.Line( geometry5, material );
+				scene.add( line5 );
+
+				// Line6
+				const points6 = [];
+				points6.push( new THREE.Vector3( 1.05, -.48, -.16 ) );
+				points6.push( new THREE.Vector3( 1.05, -.48, .09 ) );
+				const geometry6 = new THREE.BufferGeometry().setFromPoints( points6 );
+
+				const line6 = new THREE.Line( geometry6, material );
+				scene.add( line6 );
+
+				// Line7
+				const points7 = [];
+				points7.push( new THREE.Vector3( .94, -.48, -.3  ) );
+				points7.push( new THREE.Vector3( .94, -.48, -.2  ) );
+				const geometry7 = new THREE.BufferGeometry().setFromPoints( points7 );
+
+				const line7 = new THREE.Line( geometry7, material );
+				scene.add( line7 );
+
+				// Line8
+				const points8 = [];
+				points8.push( new THREE.Vector3( .94, -.45, -.3  ) );
+				points8.push( new THREE.Vector3( .94, -.45, -.2  ) );
+				const geometry8 = new THREE.BufferGeometry().setFromPoints( points8 );
+
+				const line8 = new THREE.Line( geometry8, material );
+				scene.add( line8 );
+
+				// Line9
+				const points9 = [];
+				points9.push( new THREE.Vector3( .8, -.48, -.61 ) );
+				points9.push( new THREE.Vector3( .8, -.48, -.53 ) );
+				const geometry9 = new THREE.BufferGeometry().setFromPoints( points9 );
+
+				const line9 = new THREE.Line( geometry9, material );
+				scene.add( line9 );
+
+				// Line10
+				const points10 = [];
+				points10.push( new THREE.Vector3( .9, -.48, -.61 ) );
+				points10.push( new THREE.Vector3( .9, -.48, -.53 ) );
+				const geometry10 = new THREE.BufferGeometry().setFromPoints( points10 );
+
+				const line10 = new THREE.Line( geometry10, material );
+				scene.add( line10 );
+
+				// Line11
+				const points11 = [];
+				points11.push( new THREE.Vector3( .9, -.48, -.63 ) );
+				points11.push( new THREE.Vector3( 1.1, -.48, -.63 ) );
+				const geometry11 = new THREE.BufferGeometry().setFromPoints( points11 );
+
+				const line11 = new THREE.Line( geometry11, material );
+				scene.add( line11 );
+
+				// Line12
+				const points12 = [];
+				points12.push( new THREE.Vector3( .9, -.48, -1.15 ) );
+				points12.push( new THREE.Vector3( 1.1, -.48, -1.15 ) );
+				const geometry12 = new THREE.BufferGeometry().setFromPoints( points12 );
+
+				const line12 = new THREE.Line( geometry12, material );
+				scene.add( line12 );
+
+				// Line13
+				const points13 = [];
+				points13.push( new THREE.Vector3( 1.05, -.48, -1.15 ) );
+				points13.push( new THREE.Vector3( 1.05, -.48, -1.15+.23 ) );
+				const geometry13 = new THREE.BufferGeometry().setFromPoints( points13 );
+
+				const line13 = new THREE.Line( geometry13, material );
+				scene.add( line13 );
+
+				// Line14
+				const points14 = [];
+				points14.push( new THREE.Vector3( 1.05, -.48, -.63) );
+				points14.push( new THREE.Vector3( 1.05, -.48, -.63-.25 ) );
+				const geometry14 = new THREE.BufferGeometry().setFromPoints( points14 );
+
+				const line14 = new THREE.Line( geometry14, material );
+				scene.add( line14 );
+
+				// Line15
+				const points15 = [];
+				points15.push( new THREE.Vector3( .94, -.48, -1.05  ) );
+				points15.push( new THREE.Vector3( .94, -.48, -.95  ) );
+				const geometry15 = new THREE.BufferGeometry().setFromPoints( points15 );
+
+				const line15 = new THREE.Line( geometry15, material );
+				scene.add( line15 );
+
+				// Line16
+				const points16 = [];
+				points16.push( new THREE.Vector3( .94, -.45, -1.05  ) );
+				points16.push( new THREE.Vector3( .94, -.45, -.95  ) );
+				const geometry16 = new THREE.BufferGeometry().setFromPoints( points16 );
+
+				const line16 = new THREE.Line( geometry16, material );
+				scene.add( line16 );
 
 
 				// Lights
