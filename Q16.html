@@ -44,6 +44,8 @@
 
 			import { MTLLoader } from './MTLLoader.js';
 
+			import { GLTFLoader } from './GLTFLoader.js';
+
 			import { CSS2DRenderer, CSS2DObject } from './CSS2DRenderer.js';
 
 			let camera, controls, scene, renderer, labelRenderer;
@@ -142,7 +144,7 @@
 				alab.style.fontSize = 'xx-large';
 				alab.style.backgroundColor ='white';
 				const alabel = new CSS2DObject( alab );
-				alabel.position.set( 40, 80, 90);
+				alabel.position.set( 430, 80, 30);
 				
 				alabel.layers.set( 0 );
 
@@ -155,7 +157,7 @@
 				blab.style.fontSize = 'xx-large';
 				blab.style.backgroundColor ='white';
 				const blabel = new CSS2DObject( blab );
-				blabel.position.set( 137, 80, 90 );
+				blabel.position.set( 110, 80, 30 );
 				
 				blabel.layers.set( 0 );
 
@@ -168,7 +170,7 @@
 				clab.style.fontSize = 'xx-large';
 				clab.style.backgroundColor ='white';
 				const clabel = new CSS2DObject( clab );
-				clabel.position.set( 230, 80, 90 );
+				clabel.position.set( -230, 80, 30 );
 				
 				
 				clabel.layers.set( 0 );
@@ -239,57 +241,79 @@
 
 				} );
 
-				const loader4 = new STLLoader();
-				loader4.load('Q16a.STL', function ( geometry ) {
-					var material = new THREE.ShaderMaterial({
-					uniforms: {
-						color1: {
-						value: new THREE.Color("red")
-						},
-						color2: {
-						value: new THREE.Color("blue")
-						}
-					},
-					vertexShader: `
-						varying vec2 vUv;
+				const loader10 = new GLTFLoader();
+						loader10.load( 'q16c.glb', function ( gltf ) {
+							gltf.scene.traverse( function( node ) {
 
-						void main() {
-						vUv = uv;
-						gl_Position = projectionMatrix * modelViewMatrix * vec4(position,1.0);
-						}
-					`,
-					fragmentShader: `
-						uniform vec3 color1;
-						uniform vec3 color2;
+								if ( node.isMesh ) { node.castShadow = true; }
+
+							} );
+
+							const dogbone = gltf.scene
+							//dogbone.position.y = 2;
+							dogbone.position.set(0.23, -.5, -1.5 );
+							//gltf.asset.position.set(0.23, -.5, 0);
+							dogbone.scale.set( 0.003, 0.003, 0.003 );
+							dogbone.rotateY(-Math.PI/2);
+							scene.add( dogbone );
+
+							//dogbone.castShadow = true;
+
+							//render();
+
+						} );
+
+				// const loader4 = new STLLoader();
+				// loader4.load('Q16a.STL', function ( geometry ) {
+				// 	var material = new THREE.ShaderMaterial({
+				// 	uniforms: {
+				// 		color1: {
+				// 		value: new THREE.Color("red")
+				// 		},
+				// 		color2: {
+				// 		value: new THREE.Color("blue")
+				// 		}
+				// 	},
+				// 	vertexShader: `
+				// 		varying vec2 vUv;
+
+				// 		void main() {
+				// 		vUv = uv;
+				// 		gl_Position = projectionMatrix * modelViewMatrix * vec4(position,1.0);
+				// 		}
+				// 	`,
+				// 	fragmentShader: `
+				// 		uniform vec3 color1;
+				// 		uniform vec3 color2;
 					
-						varying vec2 vUv;
+				// 		varying vec2 vUv;
 						
-						void main() {
+				// 		void main() {
 						
-						gl_FragColor = vec4(mix(color1, color2, vUv.y), 1.0);
-						}
-					`,
-					wireframe: true
-					});
+				// 		gl_FragColor = vec4(mix(color1, color2, vUv.y), 1.0);
+				// 		}
+				// 	`,
+				// 	wireframe: true
+				// 	});
 
-					//const material = new THREE.MeshPhongMaterial( { color: 0x0000ff, specular: 0x111111, shininess: 200 } );
-					const mesh = new THREE.Mesh( geometry, material );
+				// 	//const material = new THREE.MeshPhongMaterial( { color: 0x0000ff, specular: 0x111111, shininess: 200 } );
+				// 	const mesh = new THREE.Mesh( geometry, material );
 
-					mesh.position.set( 0.23, -.5, -1.5 );
-					mesh.rotation.set( - Math.PI / 2,  Math.PI / 2,  Math.PI / 2 );
-					mesh.scale.set( 0.003, 0.003, 0.003 );
-					mesh.rotateY(Math.PI);
+				// 	mesh.position.set( 0.23, -.5, -1.5 );
+				// 	mesh.rotation.set( - Math.PI / 2,  Math.PI / 2,  Math.PI / 2 );
+				// 	mesh.scale.set( 0.003, 0.003, 0.003 );
+				// 	mesh.rotateY(Math.PI);
 
-					mesh.castShadow = true;
-					mesh.receiveShadow = true;
+				// 	mesh.castShadow = true;
+				// 	mesh.receiveShadow = true;
 
-					mesh.layers.enableAll();
-					mesh.add( alabel );
-					mesh.add( blabel );
-					mesh.add( clabel );
-					scene.add( mesh );
+				// 	mesh.layers.enableAll();
+				// 	mesh.add( alabel );
+				// 	mesh.add( blabel );
+				// 	mesh.add( clabel );
+				// 	scene.add( mesh );
 
-				} );
+				// } );
 
 				
 				// new MTLLoader()
@@ -313,14 +337,14 @@
 
 				// const mtlLoader = new MTLLoader()
 				// mtlLoader.load(
-				// 	'Q16c.mtl',
+				// 	'q16c_textured.mtl',
 				// 	(materials) => {
 				// 		materials.preload()
 
 				// 		const objLoader = new OBJLoader()
 				// 		objLoader.setMaterials(materials)
 				// 		objLoader.load(
-				// 			'Q16c.obj',
+				// 			'q16c_textured.obj',
 				// 			(object) => {
 				// 				object.position.set(0.23, -.5, 0);
 				// 				object.scale.set( 0.003, 0.003, 0.003 );
@@ -332,6 +356,8 @@
 				// 	},
 					
 				// )
+
+				
 
 				// const loader4 = new OBJLoader();
 				// // load a resource
