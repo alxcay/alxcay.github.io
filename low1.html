@@ -21,8 +21,7 @@
 		<script type="importmap">
 			{
 				"imports": {
-					"three": "../build/three.module.js",
-					"three/addons/": "./jsm/"
+					"three": "./three.module.js"
 				}
 			}
 		</script>
@@ -30,13 +29,12 @@
 		<script type="module">
 
 			import * as THREE from 'three';
+			import  RoomEnvironment  from './RoomEnvironment.js';
+			import { OrbitControls } from './OrbitControls.js';
+			import { GLTFLoader } from './GLTFLoader.js';
 
-			import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
-			import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
-			import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
-
-			import { KTX2Loader } from 'three/addons/loaders/KTX2Loader.js';
-			import { MeshoptDecoder } from 'three/addons/libs/meshopt_decoder.module.js';
+			//import { KTX2Loader } from 'three/addons/loaders/KTX2Loader.js';
+			import { MeshoptDecoder } from './meshopt_decoder.module.js';
 
 			let camera, scene, renderer;
 
@@ -73,14 +71,14 @@
 				grid.material.transparent = true;
 				scene.add( grid );
 
-				const ktx2Loader = new KTX2Loader()
-					.setTranscoderPath( 'js/libs/basis/' )
-					.detectSupport( renderer );
+				//const ktx2Loader = new KTX2Loader()
+				//	.setTranscoderPath( 'js/libs/basis/' )
+				//	.detectSupport( renderer );
 
-				const loader = new GLTFLoader().setPath( 'models/gltf/' );
-				loader.setKTX2Loader( ktx2Loader );
+				const loader = new GLTFLoader();
+				//loader.setKTX2Loader( ktx2Loader );
 				loader.setMeshoptDecoder( MeshoptDecoder );
-				loader.load( 'coffeemat.glb', function ( gltf ) {
+				loader.load( 'low1.glb', function ( gltf ) {
 
 					// coffeemat.glb was produced from the source scene using gltfpack:
 					// gltfpack -i coffeemat/scene.gltf -o coffeemat.glb -cc -tc
