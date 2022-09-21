@@ -1,0 +1,39 @@
+{
+    "parameterSets": {
+        "design default values": {
+            "C_DEBUG_ENABLED": "false",
+            "bottom_pin_shaft_counterbore_depth": "2.5",
+            "bottom_pin_shaft_counterbore_diameter": "6",
+            "bottom_pin_shaft_counterbore_shape": "2",
+            "component_clearance": "0.4",
+            "component_color": "Silver",
+            "counter_sink_depth": "2.5",
+            "enable_auto_pin_size": "1",
+            "enable_fasteners": "1",
+            "enable_female_leaf": "1",
+            "enable_fillet": "1",
+            "enable_male_leaf": "1",
+            "enable_pin": "1",
+            "enable_pin_shaft_counterbore": "0",
+            "fastener_column_count": "2",
+            "fastener_count": "6",
+            "fastener_head_diameter": "7",
+            "fastener_margin": "3",
+            "fastener_thread_diameter": "3.5",
+            "flip_model": "0",
+            "fstener_head_type": "0",
+            "hinge_width": "65",
+            "knuckle_count": "7",
+            "knuckle_gusset_type": "0",
+            "leaf_gauge": "5",
+            "leaf_height": "60",
+            "pin_diameter": "3",
+            "resolution": "128",
+            "throw_angle": "0",
+            "top_pin_shaft_counterbore_depth": "2.5",
+            "top_pin_shaft_counterbore_diameter": "6.5",
+            "top_pin_shaft_counterbore_shape": "0"
+        }
+    },
+    "fileFormatVersion": "1"
+}
