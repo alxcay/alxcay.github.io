@@ -163,8 +163,8 @@
 							//dogbone.position.y = 2;
 							dogbone.position.set(0.22, -.5, -.2 );
 							//gltf.asset.position.set(0.23, -.5, 0);
-							dogbone.scale.set(.15, .15, .15 );
-							dogbone.rotateY(-Math.PI/2);
+							dogbone.scale.set(.01, .01, .01 );
+							dogbone.rotateY(Math.PI/2);
 							//dogbone.rotateZ(Math.PI/2);
 							scene.add( dogbone );
 
@@ -181,7 +181,7 @@
 				scene.add( new THREE.HemisphereLight( 0x443333, 0x111122 ) );
 
 				addShadowedLight(-1, 1, 2, 0xffffff, 1.35 );
-				addShadowedLight( 1.5, 5, 0, 0xffffff, 0.7 );
+				addShadowedLight( 1.5, 1, -1, 0xffffff, 0.4 );
 
 
 				window.addEventListener( 'resize', onWindowResize );
@@ -210,7 +210,7 @@
 				directionalLight.shadow.mapSize.width = 1024;
 				directionalLight.shadow.mapSize.height = 1024;
 
-				directionalLight.shadow.bias = - 0.001;
+				//directionalLight.shadow.bias = - 0.001;
 
 			}
 
