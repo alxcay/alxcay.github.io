@@ -100,7 +100,7 @@
 				labelRenderer.domElement.style.top = '0px';
 				document.body.appendChild( labelRenderer.domElement );
 
-				camera = new THREE.PerspectiveCamera( 20, window.innerWidth / window.innerHeight, 0.1, 8 );
+				camera = new THREE.PerspectiveCamera( 20, window.innerWidth / window.innerHeight, 0.1, 1000 );
 				camera.position.set(2, 1, -0.2 );
 
 				// controls
@@ -149,32 +149,69 @@
 				// ASCII file STL IMPORT
 
 				
+				//Labels Add
 
+				//Label (a)
+				const alab = document.createElement( 'div' );
+				alab.className = 'label';
+				alab.textContent = 'a';
+				alab.style.marginTop = '-1em';
+				alab.style.padding = '7px';
+				alab.style.fontSize = 'xx-large';
+				alab.style.backgroundColor ='white';
+				const alabel = new CSS2DObject( alab );
+				alabel.position.set( 60, 120, 400 );
+				
+				alabel.layers.set( 0 );
+
+				//Label (b)
+				const blab = document.createElement( 'div' );
+				blab.className = 'label';
+				blab.textContent = 'b';
+				blab.style.marginTop = '-1em';
+				blab.style.padding = '7px';
+				blab.style.fontSize = 'xx-large';
+				blab.style.backgroundColor ='white';
+				const blabel = new CSS2DObject( blab );
+				blabel.position.set( 60, 120, 232 );
+				
+				blabel.layers.set( 0 );
+
+				//Label (c)
+				const clab = document.createElement( 'div' );
+				clab.className = 'label';
+				clab.textContent = 'c';
+				clab.style.marginTop = '-1em';
+				clab.style.padding = '7px';
+				clab.style.fontSize = 'xx-large';
+				clab.style.backgroundColor ='white';
+				const clabel = new CSS2DObject( clab );
+				clabel.position.set( 60, 120, 62 );
+				
+				
+				clabel.layers.set( 0 );
 				
 
-				const loader10 = new GLTFLoader();
-						loader10.load( 'o_low1.glb', function ( gltf ) {
-							gltf.scene.traverse( function( node ) {
+				const loader = new STLLoader();
+				loader.load('Q1.STL', function ( geometry ) {
 
-								if ( node.isMesh ) { node.castShadow = true; }
-								if ( node.isMesh ) { node.receiveShadow = true; }
+					const material = new THREE.MeshPhongMaterial( { color: 0x041E42, specular: 0x041E42, shininess: 0 } );
+					const mesh = new THREE.Mesh( geometry, material );
 
-							} );
+					mesh.position.set( 0.1, -0.63, -.665 );
+					//mesh.rotation.set( - Math.PI/2 ,  Math.PI ,  Math.PI / 2 );
+					mesh.scale.set( 0.002, 0.002, 0.002 );
 
-							const dogbone = gltf.scene
-							//dogbone.position.y = 2;
-							dogbone.position.set(0.21, -.5, -0.2 );
-							//gltf.asset.position.set(0.23, -.5, 0);
-							dogbone.scale.set(.2, .2, .2 );
-							dogbone.rotateY(-Math.PI);
-							//dogbone.rotateZ(Math.PI/2);
-							scene.add( dogbone );
+					mesh.castShadow = true;
+					mesh.receiveShadow = true;
 
-							dogbone.castShadow = true;
+					mesh.layers.enableAll();
+					mesh.add( alabel );
+					mesh.add( blabel );
+					mesh.add( clabel );
+					scene.add( mesh );
 
-							//render();
-
-						} );
+				} );
 
 				
 
@@ -209,10 +246,12 @@
 				directionalLight.shadow.camera.near = -0;
 				directionalLight.shadow.camera.far = 15;
 
-				directionalLight.shadow.mapSize.width = 1024;
-				directionalLight.shadow.mapSize.height = 1024;
+				directionalLight.shadow.mapSize.width = 2048;
+				directionalLight.shadow.mapSize.height = 2048;
 
-				 directionalLight.shadow.bias = - 0.001;
+				// directionalLight.shadow.bias = - 0.002;
+
+				 
 
 			}
 

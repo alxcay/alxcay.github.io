@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+    <link rel="stylesheet" href="typewriter.css">
+<body>
+
+    <style>
+
+        /* Google Fonts */
+        @import url(https://fonts.googleapis.com/css?family=Libre+Baskerville);
+
+        body {
+  background-color:#ffffff;
+  font-size: 40px;
+  text-align: center;
+  color:rgb(0, 0, 0);
+  padding-top:10em;
+}
+
+* { color:rgb(0, 0, 0); text-decoration: none;}
+    </style>
+
+    <style>
+        .fade-in {
+  animation: fadeIn ease 20s;
+  -webkit-animation: fadeIn ease 20s;
+  -moz-animation: fadeIn ease 10s;
+  -o-animation: fadeIn ease 10s;
+  -ms-animation: fadeIn ease 10s;
+}
+@keyframes fadeIn {
+  0% {
+    opacity:0;
+  }
+  100% {
+    opacity:1;
+  }
+}
+
+@-moz-keyframes fadeIn {
+  0% {
+    opacity:0;
+  }
+  100% {
+    opacity:1;
+  }
+}
+
+@-webkit-keyframes fadeIn {
+  0% {
+    opacity:0;
+  }
+  80% {
+    opacity:0;
+  }
+  100% {
+    opacity:1;
+  }
+}
+
+@-o-keyframes fadeIn {
+  0% {
+    opacity:0;
+  }
+  100% {
+    opacity:1;
+  }
+}
+
+@-ms-keyframes fadeIn {
+  0% {
+    opacity:0;
+  }
+  100% {
+    opacity:1;
+}
+    </style>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+  $("button").click(function(){
+    $("#TheImgId").fadeIn();
+    $("#div2").fadeIn("slow");
+    $("#div3").fadeIn(3000);
+  });
+});
+</script>
+
+    <script>
+
+        
+
+var TxtType = function(el, toRotate, period) {
+        this.toRotate = toRotate;
+        this.el = el;
+        this.loopNum = 0;
+        this.period = parseInt(period, 10) || 2000;
+        this.txt = '';
+        this.tick();
+        this.isDeleting = false;
+    };
+
+    TxtType.prototype.tick = function() {
+        var i = this.loopNum % this.toRotate.length;
+        var fullTxt = this.toRotate[i];
+
+        if (this.isDeleting) {
+        this.txt = fullTxt.substring(0, this.txt.length - 1);
+        } else {
+        this.txt = fullTxt.substring(0, this.txt.length + 1);
+        }
+
+        this.el.innerHTML = '<span class="wrap">'+this.txt+'</span>';
+
+        var that = this;
+        var delta = 200 - Math.random() * 100;
+
+        if (this.isDeleting) { delta /= 2; }
+
+        if (!this.isDeleting && this.txt === fullTxt) {
+        delta = this.period;
+			if (this.loopNum < this.toRotate.length-1) {
+        this.isDeleting = true;
+			}
+        } else if (this.isDeleting && this.txt === '') {
+        this.isDeleting = false;
+        this.loopNum++;
+        delta = 500;
+        }
+
+        setTimeout(function() {
+        that.tick();
+        }, delta);
+    };
+
+    
+
+    window.onload = function() {
+        var elements = document.getElementsByClassName('typewrite');
+        window.setTimeout('document.getElementById("TheImgId").style.display = "inline";',8000);
+        for (var i=0; i<elements.length; i++) {
+            var toRotate = elements[i].getAttribute('data-type');
+            var period = elements[i].getAttribute('data-period');
+            if (toRotate) {
+              new TxtType(elements[i], JSON.parse(toRotate), period);
+            }
+        }
+        // INJECT CSS
+        var css = document.createElement("style");
+        css.type = "text/css";
+        css.innerHTML = ".typewrite > .wrap { border-right: 0.08em solid #000000 }";
+        document.body.appendChild(css);
+    };
+
+    </script>
+
+    
+
+    <h1>
+        <a class="typewrite" data-period="2000" data-type='[ "Hey there.", "I&#39;m Alex Cayley"]'>
+      <span class="wrap"></span>
+        </a>
+    </h1>
+
+    <div class="fade-in">
+    <img src="downicon.png" alt="HTML5 Icon" width="128" height="128">
+    </div>
+
+
+</body>
+</html>
