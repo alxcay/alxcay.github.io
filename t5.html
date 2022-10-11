@@ -160,7 +160,7 @@
 				alab.style.fontSize = 'xx-large';
 				alab.style.backgroundColor ='white';
 				const alabel = new CSS2DObject( alab );
-				alabel.position.set( 83, 150, 210 );
+				alabel.position.set( 45, 80, 50 );
 				
 				alabel.layers.set( 0 );
 
@@ -173,7 +173,7 @@
 				blab.style.fontSize = 'xx-large';
 				blab.style.backgroundColor ='white';
 				const blabel = new CSS2DObject( blab );
-				blabel.position.set( 265, 150, 210 );
+				blabel.position.set( 205, 80, 50 );
 				
 				blabel.layers.set( 0 );
 
@@ -186,21 +186,21 @@
 				clab.style.fontSize = 'xx-large';
 				clab.style.backgroundColor ='white';
 				const clabel = new CSS2DObject( clab );
-				clabel.position.set( 455, 150, 210 );
+				clabel.position.set( 355, 80, 50 );
 				
 				
 				clabel.layers.set( 0 );
 				
 
 				const loader = new STLLoader();
-				loader.load('Q2.STL', function ( geometry ) {
+				loader.load('Q5.STL', function ( geometry ) {
 
 					const material = new THREE.MeshPhongMaterial( { color: 0x041E42, specular: 0x041E42, shininess: 0 } );
 					const mesh = new THREE.Mesh( geometry, material );
 
-					mesh.position.set( -0.1, -0.59, .27 );
+					mesh.position.set( .1, -0.51, .24 );
 					mesh.rotation.set( 0 ,  Math.PI/2 ,  0);
-					mesh.scale.set( 0.0017, 0.0017, 0.0017 );
+					mesh.scale.set( 0.002, 0.002, 0.002 );
 
 					mesh.castShadow = true;
 					mesh.receiveShadow = true;
