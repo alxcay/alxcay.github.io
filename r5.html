@@ -175,7 +175,7 @@
 				grid.position.z = -.2;
 				scene.add( grid );
 
-				// ASCII file STL IMPORT
+				// ASCII file STL IMPORT 
 
 				
 
@@ -188,6 +188,14 @@
 								if ( node.isMesh ) { node.castShadow = true; }
 								if ( node.isMesh ) { node.receiveShadow = true; }
 
+							} );
+
+							gltf.scene.traverse( ( object ) => {
+							if ( object.isMesh ) {
+
+							object.material.color.set( 0x287ac7 );
+							
+							}
 							} );
 
 							const dogbone = gltf.scene

@@ -175,6 +175,34 @@
 				grid.position.z = -.2;
 				scene.add( grid );
 
+				//Label (mat1)
+				const alab = document.createElement( 'div' );
+				alab.className = 'label';
+				alab.textContent = 'material 2';
+				alab.style.marginTop = '-1em';
+				alab.style.padding = '7px';
+				alab.style.fontSize = 'xx-large';
+				alab.style.color = 'white';
+				alab.style.backgroundColor ='#28485f';
+				const alabel = new CSS2DObject( alab );
+				alabel.position.set( -7.09, 0, 0);
+				
+				//alabel.layers.set( 0 );
+
+				//Label (mat1)
+				const blab = document.createElement( 'div' );
+				blab.className = 'label';
+				blab.textContent = 'material 1';
+				blab.style.marginTop = '-1em';
+				blab.style.padding = '7px';
+				blab.style.fontSize = 'xx-large';
+				blab.style.color = 'white';
+				blab.style.backgroundColor ='#b4b6b8';
+				const blabel = new CSS2DObject( blab );
+				blabel.position.set( -7, 0.7, 0);
+				
+				//blabel.layers.set( 0 );
+
 				// ASCII file STL IMPORT
 
 				
@@ -182,11 +210,58 @@
 				
 
 				const loader10 = new GLTFLoader();
-						loader10.load( 'o_high2.glb', function ( gltf ) {
+						loader10.load( 'o_high2_top.glb', function ( gltf ) {
 							gltf.scene.traverse( function( node ) {
 
 								if ( node.isMesh ) { node.castShadow = true; }
 								if ( node.isMesh ) { node.receiveShadow = true; }
+
+							} );
+
+							gltf.scene.traverse( ( object ) => {
+
+							if ( object.isMesh ) {
+
+								//object.material.color.set( 0x287ac7 );
+								//object.material.specular.set( 0x041E42 );
+							}
+
+							} );
+
+							const dogbone = gltf.scene
+							//dogbone.position.y = 2;
+							dogbone.position.set(0.22, -.5, -.2 );
+							//gltf.asset.position.set(0.23, -.5, 0);
+							dogbone.scale.set(.06, .06, .06 );
+							dogbone.rotateY(-Math.PI/2);
+
+							dogbone.add( alabel );
+							dogbone.add( blabel );
+							//dogbone.rotateZ(Math.PI/2);
+							scene.add( dogbone );
+
+							//dogbone.castShadow = true;
+
+							//render();
+
+						} );
+
+						const loader11 = new GLTFLoader();
+						loader11.load( 'o_high2_base.glb', function ( gltf ) {
+							gltf.scene.traverse( function( node ) {
+
+								if ( node.isMesh ) { node.castShadow = true; }
+								if ( node.isMesh ) { node.receiveShadow = true; }
+
+							} );
+
+							gltf.scene.traverse( ( object ) => {
+
+							if ( object.isMesh ) {
+
+								object.material.color.set( 0x287ac7 );
+								//object.material.specular.set( 0x041E42 );
+							}
 
 							} );
 

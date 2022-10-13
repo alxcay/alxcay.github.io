@@ -189,6 +189,15 @@
 
 							} );
 
+							gltf.scene.traverse( ( object ) => {
+
+							if ( object.isMesh ) {
+
+								object.material.color.set( 0x287ac7 );
+								//object.material.specular.set( 0x041E42 );
+							}
+
+							} );
 							const dogbone = gltf.scene
 							//dogbone.position.y = 2;
 							dogbone.position.set(0.5, -.41, -.2 );
@@ -196,6 +205,9 @@
 							dogbone.scale.set(5, 5, 5 );
 							dogbone.rotateX(-Math.PI/2);
 							dogbone.rotateZ(Math.PI/2);
+
+							let dogbonecolor = new THREE.Color(0x443333);
+							//dogbone.material.color.set(dogbonecolor);
 							scene.add( dogbone );
 
 							//dogbone.castShadow = true;

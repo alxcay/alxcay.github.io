@@ -192,6 +192,14 @@
 
 							} );
 
+							gltf.scene.traverse( ( object ) => {
+							if ( object.isMesh ) {
+
+							object.material.color.set( 0x287ac7 );
+							
+							}
+							} );
+
 							const dogbone = gltf.scene
 							//dogbone.position.y = 2;
 							dogbone.position.set(0.21, -.5, -0.2 );
