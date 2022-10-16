@@ -47,6 +47,33 @@
     margin: auto;
 }
 
+.toptexts3 {
+       animation: fadeEffect 3s; /* fading effect takes 3s */
+    
+    }
+    
+@keyframes fadeEffect { /* from 0 to full opacity */
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+@keyframes fadeOut {
+   from {opacity: 1;}
+   to {opacity: 0;} 
+} 
+
+
+#toptexts3 {
+	text-align: center;
+    position:absolute;
+    top:70%;
+    
+    left: 0;
+    right: 0;
+    
+    margin: auto;
+}
+
 #textstuff {
 	text-align: center;
     position: absolute;
@@ -101,6 +128,14 @@
 
     </div>
 
+    <div class="toptexts3" id="toptexts3">
+        
+        <div id="text">
+        <div>I'm an engineer.</div>
+        </div>
+
+    </div>
+
     <div id="textstuff">
         <div id="text">
         <div>ok!</div>
@@ -109,21 +144,43 @@
 
     <script>
         window.onbeforeunload = function () {
-  window.scrollTo(0, 0);
-}
+            window.scrollTo(0, 0);
+        }
+
         document.getElementById("toptexts2").style.display = "none";
+        document.getElementById("toptexts3").style.display = "none";
     </script>
     
     <script>
-         window.addEventListener("scroll", function() {showFunction()});
+         window.addEventListener("scroll", function() {showFunction3()});
 
+        function showFunction3() {
+            if ((document.body.scrollTop > 10 || document.documentElement.scrollTop > 10) && (counter === 9)) {
+                //document.getElementById("toptexts2").style.display = "block";
+                document.getElementById("cursor").style.display = "none";
+            } else {
+                //document.getElementById("toptexts2").style.display = "none";
+            }
+        }
+
+        window.addEventListener("scroll", function() {showFunction()});
         function showFunction() {
             if (document.body.scrollTop > 10 || document.documentElement.scrollTop > 10) {
                 document.getElementById("toptexts2").style.display = "block";
             } else {
                 document.getElementById("toptexts2").style.display = "none";
             }
-}
+        }
+
+        window.addEventListener("scroll", function() {showFunction2()});
+
+        function showFunction2() {
+            if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+                document.getElementById("toptexts3").style.display = "block";
+            } else {
+                document.getElementById("toptexts3").style.display = "none";
+            }
+        }
     </script>
     <script>
         // List of sentences
