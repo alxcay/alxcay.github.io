@@ -14,11 +14,36 @@
 			a {
 				color: #f00;
 			}
+
+			button {
+			position: absolute;
+
+			z-index: 99;
+			right: 2%;
+			top: 0%;
+			font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+
+			color: white;
+
+
+			background-color: transparent;
+
+			border: none;
+			color: white;
+			padding: 15px 32px;
+			text-align: center;
+			text-decoration: none;
+			display: inline-block;
+			font-size: 16px;
+
+				}
 		</style>
 	</head>
 
 	<body>
 		
+		<button onclick="ResetView()"><img src="reseticon.png" width="80" height="80"></button>
+
 
 		<!-- Import maps polyfill -->
 		<!-- Remove this when import maps will be widely supported -->
@@ -160,7 +185,7 @@
 				alab.style.fontSize = 'xx-large';
 				alab.style.backgroundColor ='white';
 				const alabel = new CSS2DObject( alab );
-				alabel.position.set( 34, 70, 57 );
+				alabel.position.set( 34, 30, 57 );
 				
 				alabel.layers.set( 0 );
 
@@ -173,7 +198,7 @@
 				blab.style.fontSize = 'xx-large';
 				blab.style.backgroundColor ='white';
 				const blabel = new CSS2DObject( blab );
-				blabel.position.set( 34, 70, 130 );
+				blabel.position.set( 34, 30, 130 );
 				
 				blabel.layers.set( 0 );
 
@@ -186,7 +211,7 @@
 				clab.style.fontSize = 'xx-large';
 				clab.style.backgroundColor ='white';
 				const clabel = new CSS2DObject( clab );
-				clabel.position.set( 34, 70, 217 );
+				clabel.position.set( 34, 30, 217 );
 				
 				
 				clabel.layers.set( 0 );
@@ -213,6 +238,45 @@
 
 				} );
 
+				const loader2= new STLLoader();
+				loader2.load('arrow.STL', function ( geometry ) {
+
+					const material = new THREE.MeshPhongMaterial( { color: 0xFF0000, specular: 0x041E42, shininess: 0 } );
+					const mesh = new THREE.Mesh( geometry, material );
+
+					mesh.position.set( .14, -.28, .222 );
+					mesh.rotation.set( 0 ,  Math.PI/2 ,  0);
+					mesh.scale.set( 0.005, 0.005, 0.005 );
+
+					//mesh.castShadow = true;
+					mesh.receiveShadow = true;
+
+					mesh.layers.enableAll();
+					
+					scene.add( mesh );
+
+				} );
+
+				const loader3= new STLLoader();
+				loader3.load('arrow.STL', function ( geometry ) {
+
+					const material = new THREE.MeshPhongMaterial( { color: 0xFF0000, specular: 0x041E42, shininess: 0, emmissive: 0xFFFFFF} );
+					const mesh = new THREE.Mesh( geometry, material );
+
+					mesh.position.set( .14, -.39, -.25 );
+					mesh.rotation.set( -Math.PI/2 ,  Math.PI/2 ,  0);
+					mesh.scale.set( 0.005, 0.005, 0.005 );
+
+					//mesh.castShadow = true;
+					mesh.receiveShadow = true;
+
+					mesh.layers.enableAll();
+					
+					scene.add( mesh );
+
+				} );
+
+
 				
 
 
@@ -225,7 +289,13 @@
 
 				window.addEventListener( 'resize', onWindowResize );
 
-			}
+				controls.saveState();
+
+				}
+
+				window.ResetView = function() {
+					controls.reset();
+					}
 
 			
 

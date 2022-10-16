@@ -16,7 +16,7 @@
 			}
 
 			button {
-				position: absolute;
+			position: absolute;
 
 			z-index: 99;
 			right: 2%;
@@ -43,7 +43,6 @@
 	<body>
 		
 		<button onclick="ResetView()"><img src="reseticon.png" width="80" height="80"></button>
-
 
 		<!-- Import maps polyfill -->
 		<!-- Remove this when import maps will be widely supported -->
@@ -185,7 +184,7 @@
 				alab.style.fontSize = 'xx-large';
 				alab.style.backgroundColor ='white';
 				const alabel = new CSS2DObject( alab );
-				alabel.position.set( 83, 150, 210 );
+				alabel.position.set( 114, 50, 50 );
 				
 				alabel.layers.set( 0 );
 
@@ -198,7 +197,7 @@
 				blab.style.fontSize = 'xx-large';
 				blab.style.backgroundColor ='white';
 				const blabel = new CSS2DObject( blab );
-				blabel.position.set( 265, 150, 210 );
+				blabel.position.set( 357, 50, 50 );
 				
 				blabel.layers.set( 0 );
 
@@ -211,21 +210,45 @@
 				clab.style.fontSize = 'xx-large';
 				clab.style.backgroundColor ='white';
 				const clabel = new CSS2DObject( clab );
-				clabel.position.set( 455, 150, 210 );
+				clabel.position.set( 598, 50, 50 );
 				
 				
 				clabel.layers.set( 0 );
+
+				//Label (mat1)
+				const mat1 = document.createElement( 'div' );
+				mat1.className = 'label';
+				mat1.textContent = 'material 1';
+				mat1.style.marginTop = '-1em';
+				mat1.style.padding = '7px';
+				mat1.style.fontSize = 'xx-large';
+				mat1.style.color = 'white';
+				mat1.style.backgroundColor ='#28485f';
+				const mat1label = new CSS2DObject( mat1 );
+				mat1label.position.set( 360, 50, 300);
+
+				//Label (mat2)
+				const mat2 = document.createElement( 'div' );
+				mat2.className = 'label';
+				mat2.textContent = 'material 2';
+				mat2.style.marginTop = '-1em';
+				mat2.style.padding = '7px';
+				mat2.style.fontSize = 'xx-large';
+				mat2.style.color = 'black';
+				mat2.style.backgroundColor ='#f0f0f0';
+				const mat2label = new CSS2DObject( mat2 );
+				mat2label.position.set( 360, 0, 300);
 				
 
 				const loader = new STLLoader();
-				loader.load('Q2.STL', function ( geometry ) {
+				loader.load('Q16a.STL', function ( geometry ) {
 
 					const material = new THREE.MeshPhongMaterial( { color: 0x041E42, specular: 0x041E42, shininess: 0 } );
 					const mesh = new THREE.Mesh( geometry, material );
 
-					mesh.position.set( -0.1, -0.59, .27 );
-					mesh.rotation.set( 0 ,  Math.PI/2 ,  0);
-					mesh.scale.set( 0.0017, 0.0017, 0.0017 );
+					mesh.position.set( .15, -.5, 0.3 );
+					mesh.rotation.set(0 ,  Math.PI/2 ,  0);
+					mesh.scale.set( 0.0014, 0.0014, 0.0014 );
 
 					mesh.castShadow = true;
 					mesh.receiveShadow = true;
@@ -234,9 +257,74 @@
 					mesh.add( alabel );
 					mesh.add( blabel );
 					mesh.add( clabel );
+					mesh.add( mat1label );
+					mesh.add( mat2label );
 					scene.add( mesh );
 
 				} );
+
+				const loader2 = new STLLoader();
+				loader2.load('Q16b.STL', function ( geometry ) {
+
+					const material = new THREE.MeshPhongMaterial( { color: 0x041E42, specular: 0x041E42, shininess: 0 } );
+					const mesh = new THREE.Mesh( geometry, material );
+
+					mesh.position.set( .15, -.5, -.057 );
+					mesh.rotation.set(0 ,  Math.PI/2 ,  0);
+					mesh.scale.set( 0.0013, 0.0013, 0.0013 );
+
+					mesh.castShadow = true;
+					mesh.receiveShadow = true;
+
+					mesh.layers.enableAll();
+					
+					scene.add( mesh );
+
+				} );
+
+				const loader3 = new STLLoader();
+				loader3.load('Q16b.STL', function ( geometry ) {
+
+					const material = new THREE.MeshPhongMaterial( { color: 0xFFFFFF, specular: 0x041E42, shininess: 0 } );
+					const mesh = new THREE.Mesh( geometry, material );
+
+					mesh.position.set( .25, -.5, -.345 );
+					mesh.rotation.set(0 ,  -Math.PI/2 ,  0);
+					mesh.scale.set( 0.0013, 0.0013, 0.0013 );
+
+					mesh.castShadow = true;
+					mesh.receiveShadow = true;
+
+					mesh.layers.enableAll();
+					
+					scene.add( mesh );
+
+				} );
+
+				const loader10 = new GLTFLoader();
+						loader10.load( 'q16c.glb', function ( gltf ) {
+							gltf.scene.traverse( function( node ) {
+
+								if ( node.isMesh ) { node.castShadow = true; }
+								if ( node.isMesh ) { node.receiveShadow = true; }
+
+							} );
+
+							
+							const dogbone = gltf.scene
+							//dogbone.position.y = 2;
+							dogbone.position.set( .15, -.5, -.39 );
+							//gltf.asset.position.set(0.23, -.5, 0);
+							dogbone.scale.set(0.0014, 0.0014, 0.0014);
+							dogbone.rotateY(Math.PI/2);
+							//dogbone.rotateZ(Math.PI/2);
+							scene.add( dogbone );
+
+							//dogbone.castShadow = true;
+
+							//render();
+
+						} );
 
 				
 
@@ -280,7 +368,7 @@
 				directionalLight.shadow.mapSize.width = 2048;
 				directionalLight.shadow.mapSize.height = 2048;
 
-				// directionalLight.shadow.bias = - 0.002;
+				directionalLight.shadow.bias = -0.0001;
 
 				 
 
