@@ -185,7 +185,7 @@
 				alab.style.fontSize = 'xx-large';
 				alab.style.backgroundColor ='white';
 				const alabel = new CSS2DObject( alab );
-				alabel.position.set( 38, 70, 65 );
+				alabel.position.set( 0, -54, 18 );
 				
 				alabel.layers.set( 0 );
 
@@ -198,7 +198,7 @@
 				blab.style.fontSize = 'xx-large';
 				blab.style.backgroundColor ='white';
 				const blabel = new CSS2DObject( blab );
-				blabel.position.set( 138, 70, 65 );
+				blabel.position.set( 0, -36.5, 18 );
 				
 				blabel.layers.set( 0 );
 
@@ -211,12 +211,79 @@
 				clab.style.fontSize = 'xx-large';
 				clab.style.backgroundColor ='white';
 				const clabel = new CSS2DObject( clab );
-				clabel.position.set( 235, 70, 65 );
+				clabel.position.set( 0,-18.5, 18 );
 				
 				
 				clabel.layers.set( 0 );
 				
+				//Label (w)
+				const wlab = document.createElement( 'div' );
+				wlab.className = 'label';
+				wlab.textContent = 'W';
+				wlab.style.marginTop = '-1em';
+				wlab.style.padding = '1px';
+				wlab.style.fontSize = 'large';
+				wlab.style.backgroundColor ='white';
+				wlab.style.fontFamily = 'Arial'
+				wlab.style.fontStyle = 'bold'
+				const wlabel = new CSS2DObject( wlab );
+				wlabel.position.set( 18,-36, 9 );
 
+				//Label (w2)
+				const wlab2 = document.createElement( 'div' );
+				wlab2.className = 'label';
+				wlab2.textContent = 'W';
+				wlab2.style.marginTop = '-1em';
+				wlab2.style.padding = '1px';
+				wlab2.style.fontSize = 'large';
+				wlab2.style.backgroundColor ='white';
+				wlab2.style.fontFamily = 'Arial'
+				wlab2.style.fontStyle = 'bold'
+				const wlabel2 = new CSS2DObject( wlab2 );
+				wlabel2.position.set( 18,-18, 9 );
+
+				
+
+				//Label (L)
+				const llab = document.createElement( 'div' );
+				llab.className = 'label';
+				llab.textContent = 'L';
+				llab.style.marginTop = '-1em';
+				llab.style.padding = '1px';
+				llab.style.fontSize = 'large';
+				llab.style.backgroundColor ='white';
+				llab.style.fontFamily = 'Arial'
+				llab.style.fontStyle = 'bold'
+				const llabel = new CSS2DObject( llab );
+				llabel.position.set( 3,-41, 9 );
+
+				//Label (L2)
+				const llab2 = document.createElement( 'div' );
+				llab2.className = 'label';
+				llab2.textContent = 'L';
+				llab2.style.marginTop = '-1em';
+				llab2.style.padding = '1px';
+				llab2.style.fontSize = 'large';
+				llab2.style.backgroundColor ='white';
+				llab2.style.fontFamily = 'Arial'
+				llab2.style.fontStyle = 'bold'
+				const llabel2 = new CSS2DObject( llab2 );
+				llabel2.position.set( 3,-23, 9 );
+
+				//Label (H)
+				const hlab = document.createElement( 'div' );
+				hlab.className = 'label';
+				hlab.textContent = 'H';
+				hlab.style.marginTop = '-1em';
+				hlab.style.padding = '1px';
+				hlab.style.fontSize = 'large';
+				hlab.style.backgroundColor ='white';
+				hlab.style.fontFamily = 'Arial'
+				hlab.style.fontStyle = 'bold'
+				const hlabel = new CSS2DObject( hlab );
+				hlabel.position.set( 5,-25, 8 );
+
+				//STL Loading
 				const loader = new STLLoader();
 				loader.load('Q13.STL', function ( geometry ) {
 
@@ -234,6 +301,32 @@
 					mesh.add( alabel );
 					mesh.add( blabel );
 					mesh.add( clabel );
+					mesh.add( wlabel );
+					mesh.add( llabel );
+
+					mesh.add( wlabel2 );
+					mesh.add( llabel2 );
+					mesh.add( hlabel );
+					
+					scene.add( mesh );
+
+				} );
+
+				const loader2 = new STLLoader();
+				loader2.load('q13_lines.stl', function ( geometry ) {
+
+					const material = new THREE.MeshPhongMaterial( { color: 0x000000, specular: 0x000000, shininess: 0 } );
+					const mesh = new THREE.Mesh( geometry, material );
+
+					mesh.position.set( .14, -.7, -.92 );
+					mesh.rotation.set( -Math.PI/2 ,  0 ,  0);
+					mesh.scale.set( 0.02, 0.02, 0.02 );
+
+					//mesh.castShadow = true;
+					//mesh.receiveShadow = true;
+
+					mesh.layers.enableAll();
+					
 					scene.add( mesh );
 
 				} );
