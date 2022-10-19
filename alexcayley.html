@@ -2,63 +2,34 @@
 <html>
 <head>
 
-    
+
 
 
 <title>Alex Cayley</title>
 
-<!-- Hamburger Menu -->
-<a class="McButton" data="hamburger-menu">
-    <b></b>
-    <b></b>
-    <b></b>
-  </a>
+<link rel="stylesheet" href="./style.css">
+
+
 
 
 </head>
 <body>
-    <style>
 
-        /* Hamburger*/
+    <a class="McButton" data="hamburger-menu" id="McButton">
+        <b></b>
+        <b></b>
+        <b></b>
+      </a>
 
-        /* Global Styles */
+<script src='//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+<script src='//cdnjs.cloudflare.com/ajax/libs/velocity/1.2.2/velocity.min.js'></script><script  src="./script.js"></script>
 
 
-/* Hamburger Menu */
-/* Global Styles */
-body {
-  margin: 0;
-  padding: 0;
 
-}
-/* Hamburger Menu */
-.McButton {
-  position: absolute;
-  top: 50%;
-  left: 10%;
-  margin-left: -22px;
-  margin-top: -22px;
-  width: 44px;
-  height: 33px;
-  cursor: pointer;
-}
-.McButton b {
-  position: absolute;
-  left: 0;
-  width: 44px;
-  height: 3px;
-  background-color: black;
-}
-.McButton b:nth-child(1) {
-  top: 0;
-}
-.McButton b:nth-child(2) {
-  top: 50%;
-}
-.McButton b:nth-child(3) {
-  top: 100%;
-}
-/* McButton */
+
+<style>
+
+        
 
 
 @import url(https://fonts.googleapis.com/css?family=Libre+Baskerville);
@@ -162,7 +133,9 @@ body {
 		background-color: black; 
 	}
 }
-    </style>
+</style>
+
+
 
     <div id="container">
         <div id="text"></div><div id="cursor"></div>
@@ -197,51 +170,9 @@ body {
 
         document.getElementById("toptexts2").style.display = "none";
         document.getElementById("toptexts3").style.display = "none";
+        document.getElementById("McButton").style.display = "none";
     </script>
-    <script>
-
-var McButton = $("[data=hamburger-menu]");
-var McBar1 = McButton.find("b:nth-child(1)");
-var McBar2 = McButton.find("b:nth-child(2)");
-var McBar3 = McButton.find("b:nth-child(3)");
-
-
-
-McButton.click( function() {
-  $(this).toggleClass("active");
-  
-  if (McButton.hasClass("active")) {
-    McBar1.velocity({ top: "50%" }, {duration: 200, easing: "swing"});
-    McBar3.velocity({ top: "50%" }, {duration: 200, easing: "swing"})
-          .velocity({rotateZ:"90deg"}, {duration: 800, delay: 200, easing: [500,20] });
-    McButton.velocity({rotateZ:"135deg"}, {duration: 800, delay: 200, easing: [500,20] });
-  } else {
-    McButton.velocity("reverse");
-    McBar3.velocity({rotateZ:"0deg"}, {duration: 800, easing: [500,20] })
-          .velocity({ top: "100%" }, {duration: 200, easing: "swing"});
-    McBar1.velocity("reverse", {delay: 800});
-  }
-});
-
-
-
-
-/*$element.velocity({ 
-    width: "500px",
-    property2: value2
-}, {
-    duration: 400,
-    easing: "swing",
-    queue: "",
-    begin: undefined,
-    progress: undefined,
-    complete: undefined,
-    display: undefined,
-    visibility: undefined,
-    loop: false,
-    delay: false,
-    mobileHA: true
-});*/
+    
 
     </script>
     
@@ -252,6 +183,7 @@ McButton.click( function() {
             if ((document.body.scrollTop > 10 || document.documentElement.scrollTop > 10) && (counter === 9)) {
                 //document.getElementById("toptexts2").style.display = "block";
                 document.getElementById("cursor").style.display = "none";
+                
             } else {
                 //document.getElementById("toptexts2").style.display = "none";
             }
@@ -261,6 +193,7 @@ McButton.click( function() {
         function showFunction() {
             if (document.body.scrollTop > 10 || document.documentElement.scrollTop > 10) {
                 document.getElementById("toptexts2").style.display = "block";
+                document.getElementById("McButton").style.display = "block";
             } else {
                 document.getElementById("toptexts2").style.display = "none";
             }
