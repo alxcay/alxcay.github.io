@@ -184,7 +184,7 @@
 				alab.style.fontSize = 'xx-large';
 				alab.style.backgroundColor ='white';
 				const alabel = new CSS2DObject( alab );
-				alabel.position.set( 95, 160, 200 );
+				alabel.position.set( -2.5, -2.2, 3 );
 				
 				alabel.layers.set( 0 );
 
@@ -197,7 +197,7 @@
 				blab.style.fontSize = 'xx-large';
 				blab.style.backgroundColor ='white';
 				const blabel = new CSS2DObject( blab );
-				blabel.position.set( 343, 160, 200 );
+				blabel.position.set( 4.3, -2.2, 3 );
 				
 				blabel.layers.set( 0 );
 
@@ -210,7 +210,7 @@
 				clab.style.fontSize = 'xx-large';
 				clab.style.backgroundColor ='white';
 				const clabel = new CSS2DObject( clab );
-				clabel.position.set( 555, 160, 200 );
+				clabel.position.set( 10.5, -2.2, 3);
 				
 				
 				clabel.layers.set( 0 );
@@ -222,9 +222,9 @@
 					const material = new THREE.MeshPhongMaterial( { color: 0x041E42, specular: 0x041E42, shininess: 0 } );
 					const mesh = new THREE.Mesh( geometry, material );
 
-					mesh.position.set( -.2, -.634, 0.3 );
-					mesh.rotation.set(0 ,  Math.PI/2 ,  0);
-					mesh.scale.set( 0.0016, 0.0016, 0.0016 );
+					mesh.position.set( .1, -.5, 0.03 );
+					mesh.rotation.set(-Math.PI/2 , 0 ,  Math.PI/2);
+					mesh.scale.set( 0.05, 0.05, 0.05 );
 
 					mesh.castShadow = true;
 					mesh.receiveShadow = true;
@@ -238,14 +238,14 @@
 				} );
 
 				const loader2 = new STLLoader();
-				loader2.load('hexscrew.STL', function ( geometry ) {
+				loader2.load('Q15hardware.stl', function ( geometry ) {
 
 					const material = new THREE.MeshPhongMaterial( { color: 0xC0C0C0, specular: 0xC0C0C0, shininess: 100 } );
 					const mesh = new THREE.Mesh( geometry, material );
 
-					mesh.position.set( .26, -.5, 0.24 );
-					mesh.rotation.set(0 ,  Math.PI/1.9 ,  -0.02);
-					mesh.scale.set( 0.0016, 0.0016, 0.0016 );
+					mesh.position.set( .1, -.5, 0.03 );
+					mesh.rotation.set(-Math.PI/2 , 0 ,  Math.PI/2);
+					mesh.scale.set( 0.05, 0.05, 0.05 );
 
 					mesh.castShadow = true;
 					mesh.receiveShadow = true;
@@ -255,59 +255,7 @@
 
 				} );
 
-				const loader3 = new STLLoader();
-				loader3.load('hexscrew.STL', function ( geometry ) {
-
-					const material = new THREE.MeshPhongMaterial( { color: 0xC0C0C0, specular: 0xC0C0C0, shininess: 100 } );
-					const mesh = new THREE.Mesh( geometry, material );
-
-					mesh.position.set( .24, -.5, 0.05 );
-					mesh.rotation.set(0 ,  -Math.PI/1.9 ,  -0.02);
-					mesh.scale.set( 0.0016, 0.0016, 0.0016 );
-
-					mesh.castShadow = true;
-					mesh.receiveShadow = true;
-
-					
-					scene.add( mesh );
-
-				} );
-
-				const loader4 = new STLLoader();
-				loader4.load('hexnut.STL', function ( geometry ) {
-
-					const material = new THREE.MeshPhongMaterial( { color: 0xC0C0C0, specular: 0xC0C0C0, shininess: 100 } );
-					const mesh = new THREE.Mesh( geometry, material );
-
-					mesh.position.set( .19, -.5, .14 );
-					mesh.rotation.set(Math.PI/2 ,  -Math.PI ,  -0.02);
-					mesh.scale.set( 0.0016, 0.0016, 0.0016 );
-
-					mesh.castShadow = true;
-					mesh.receiveShadow = true;
-
-					
-					scene.add( mesh );
-
-				} );
-
-				const loader5 = new STLLoader();
-				loader5.load('hexnut.STL', function ( geometry ) {
-
-					const material = new THREE.MeshPhongMaterial( { color: 0xC0C0C0, specular: 0xC0C0C0, shininess: 100 } );
-					const mesh = new THREE.Mesh( geometry, material );
-
-					mesh.position.set( .19, -.48, .14 );
-					mesh.rotation.set(-Math.PI/1.3 ,  -Math.PI ,  -0.02);
-					mesh.scale.set( 0.0016, 0.0016, 0.0016 );
-
-					mesh.castShadow = true;
-					mesh.receiveShadow = true;
-
-					
-					scene.add( mesh );
-
-				} );
+				
 				
 
 
