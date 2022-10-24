@@ -241,7 +241,7 @@
 				
 
 				const loader = new STLLoader();
-				loader.load('q17.STL', function ( geometry ) {
+				loader.load('q17.stl', function ( geometry ) {
 
 					const material = new THREE.MeshPhongMaterial( { color: 0x041E42, specular: 0x041E42, shininess: 0 } );
 					const mesh = new THREE.Mesh( geometry, material );
@@ -263,7 +263,7 @@
 				} );
 
 				const loader2 = new STLLoader();
-				loader2.load('q17wires1.STL', function ( geometry ) {
+				loader2.load('q17wires1.stl', function ( geometry ) {
 
 					const material = new THREE.MeshPhongMaterial( { color: 0xFFFF00, specular: 0x041E42, shininess: 0 } );
 					const mesh = new THREE.Mesh( geometry, material );
@@ -282,7 +282,7 @@
 				} );
 
 				const loader3 = new STLLoader();
-				loader3.load('q17wires2.STL', function ( geometry ) {
+				loader3.load('q17wires2.stl', function ( geometry ) {
 
 					const material = new THREE.MeshPhongMaterial( { color: 0xFF0000, specular: 0x041E42, shininess: 0 } );
 					const mesh = new THREE.Mesh( geometry, material );
