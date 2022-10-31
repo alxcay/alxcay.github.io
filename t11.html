@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
+		
 		<title>three.js webgl - orbit controls</title>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
@@ -42,6 +43,8 @@
 	</head>
 
 	<body>
+
+		
 
 		<button onclick="ResetView()"><img src="reseticon.png" width="80" height="80"></button>
 		
@@ -237,6 +240,8 @@
 					mesh.add( clabel );
 					scene.add( mesh );
 
+
+
 				} );
 
 				
@@ -278,8 +283,10 @@
 				directionalLight.shadow.camera.near = -0;
 				directionalLight.shadow.camera.far = 15;
 
-				directionalLight.shadow.mapSize.width = 2048;
-				directionalLight.shadow.mapSize.height = 2048;
+				directionalLight.shadow.mapSize.width = 2048/2;
+				directionalLight.shadow.mapSize.height = 2048/2;
+
+
 
 				// directionalLight.shadow.bias = - 0.002;
 
@@ -296,6 +303,8 @@
 
 				labelRenderer.setSize( window.innerWidth, window.innerHeight );
 
+
+
 			}
 
 			function animate() {
@@ -303,6 +312,8 @@
 				requestAnimationFrame( animate );
 
 				controls.update(); // only required if controls.enableDamping = true, or if controls.autoRotate = true
+
+
 
 				// render();
 
@@ -316,6 +327,8 @@
 			// 	renderer.render( scene, camera );
 
 			// }
+
+			
 
 		</script>
 

@@ -110,7 +110,7 @@
 				scene.background = new THREE.Color( 0xffffff );
 				//scene.fog = new THREE.Fog( 0x72645b, 2, 15 );
 
-				renderer = new THREE.WebGLRenderer( { antialias: true } );
+				renderer = new THREE.WebGLRenderer( { antialias: false } );
 				renderer.setPixelRatio( window.devicePixelRatio );
 				renderer.setSize( window.innerWidth, window.innerHeight );
 				renderer.outputEncoding = THREE.sRGBEncoding;
@@ -124,7 +124,7 @@
 				labelRenderer.domElement.style.top = '0px';
 				document.body.appendChild( labelRenderer.domElement );
 
-				camera = new THREE.PerspectiveCamera( 20, window.innerWidth / window.innerHeight, 0.1, 8 );
+				camera = new THREE.PerspectiveCamera( 20, window.innerWidth / window.innerHeight, 0.1, 4 );
 				camera.position.set(2, 1, -0.2 );
 
 				// controls
@@ -276,8 +276,8 @@
 				directionalLight.shadow.camera.near = -0;
 				directionalLight.shadow.camera.far = 15;
 
-				directionalLight.shadow.mapSize.width = 2048;
-				directionalLight.shadow.mapSize.height = 2048;
+				directionalLight.shadow.mapSize.width = 2048/2;
+				directionalLight.shadow.mapSize.height = 2048/2;
 
 				// directionalLight.shadow.bias = - 0.002;
 
@@ -292,6 +292,8 @@
 
 				renderer.setSize( window.innerWidth, window.innerHeight );
 
+				
+
 				labelRenderer.setSize( window.innerWidth, window.innerHeight );
 
 			}
@@ -305,7 +307,12 @@
 				// render();
 
 				renderer.render( scene, camera );
+				//QUALITY REDUCER
+				renderer.setPixelRatio( window.devicePixelRatio );
 				labelRenderer.render( scene, camera );
+
+				console.log("Number of Triangles :", renderer.info.render.triangles);
+
 
 			}
 
